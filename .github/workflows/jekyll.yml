@@ -11,5 +11,5 @@ jobs:
     - uses: "helaili/jekyll-action@master"
       name: build and deploy
       env:
-        SRC:  sample_site
+        SRC:  "sample_site"
         secrets: "JEKYLL_PAT"
