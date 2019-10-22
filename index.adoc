@@ -3,12 +3,13 @@
 :showtitle:
 :toc: right
 :sourcedir: ..
-:page-title: Sample Site
+:page-title: Sample Site using AsciiDoc
 :page-description: Home of a sample AsciiDoc site for the Jekyll Action.
 
 == What's in the site????
 
-So many awesome things!!!
+AsciiDoc is not supported by GitHub pages' default Jekyll integration.
+With our approach based on GitHub actions, it works with AsciiDoc too.
 
 :source-highlighter: pygments
 :pygments-style: manni
