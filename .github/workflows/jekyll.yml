@@ -15,9 +15,11 @@ jobs:
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
         
-    - name: deploy
-      uses: peaceiris/actions-gh-pages@v2.5.0
-      env:
-        PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./_site
+    - name: Download azcopy
+      run: "wget -O ../azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux"
+
+    - name: extract azcopy
+      run: tar -xf ../azcopy.tar.gz -C ../
+ 
+    - name: copy file
+      run: "../azcopy_*/azcopy sync \"${{github.workspace}}/_site/\" \"https://jekylltest.blob.core.windows.net/web/${{secrets.sas_key}}\" --delete-destination=true"
